@@ -58,6 +58,18 @@ class TorrentBuild_CPPDlg : public wxDialog
 		//Do not add custom control declarations
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
+		wxStaticText *WxStaticText8;
+		wxCheckBox *MultiTrackerEnabled;
+		wxTextCtrl *TorrentComment;
+		wxButton *AdvSet;
+		wxButton *SaveSettings;
+		wxButton *ExitWithSave;
+		wxButton *ExitWithoutSave;
+		wxButton *MultitrackerSettings;
+		wxButton *BlacklistingScreen;
+		wxCheckBox *IncludeBlacklisted;
+		wxCheckBox *IncludeTorrents;
+		wxCheckBox *MakeSeparateTorrents;
 		wxGauge *WxGauge2;
 		wxGauge *HashProgress;
 		wxGauge *OptionalHashProgress;
@@ -92,6 +104,18 @@ class TorrentBuild_CPPDlg : public wxDialog
 		enum
 		{
 			////GUI Enum Control ID Start
+			ID_WXSTATICTEXT8 = 1037,
+			ID_MULTITRACKERENABLED = 1036,
+			ID_TORRENTCOMMENT = 1035,
+			ID_ADVSET = 1034,
+			ID_SAVESETTINGS = 1033,
+			ID_EXITWITHSAVE = 1032,
+			ID_EXITWITHOUTSAVE = 1031,
+			ID_MULTITRACKERSETTINGS = 1030,
+			ID_BLACKLISTINGSCREEN = 1029,
+			ID_INCLUDEBLACKLISTED = 1028,
+			ID_INCLUDETORRENTS = 1027,
+			ID_MAKESEPARATETORRENTS = 1026,
 			ID_WXGAUGE2 = 1025,
 			ID_HASHPROGRESS = 1024,
 			ID_OPTIONALHASHPROGRESS = 1023,

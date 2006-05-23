@@ -1,8 +1,8 @@
 /* THIS FILE WILL BE OVERWRITTEN BY DEV-C++ */
 /* DO NOT EDIT ! */
 
-#ifndef TorrentBuild_CPP_PRIVATE_H
-#define TorrentBuild_CPP_PRIVATE_H
+#ifndef TORRENTBUILD_CPP_PRIVATE_H
+#define TORRENTBUILD_CPP_PRIVATE_H
 
 /* VERSION DEFINITIONS */
 #define VER_STRING	"0.1.1.1"
@@ -20,4 +20,4 @@
 #define PRODUCT_NAME	""
 #define PRODUCT_VERSION	""
 
-#endif /*TorrentBuild_CPP_PRIVATE_H*/
+#endif /*TORRENTBUILD_CPP_PRIVATE_H*/

@@ -2,7 +2,7 @@ object frmNewForm: TfrmNewForm
   Left = 8
   Top = 8
   Width = 512
-  Height = 472
+  Height = 480
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Build A Torrent'
   Color = clBtnFace
@@ -320,7 +320,7 @@ object frmNewForm: TfrmNewForm
     Left = 0
     Top = 144
     Width = 81
-    Height = 16
+    Height = 17
     Caption = 'Announce URL:'
     TabOrder = 7
     Wx_BGColor = clBlack
@@ -376,7 +376,7 @@ object frmNewForm: TfrmNewForm
   object WxStaticText4: TWxStaticText
     Left = 0
     Top = 224
-    Width = 300
+    Width = 310
     Height = 16
     Caption = 'Optional hashes (Used by non-torrent peer to peer networks):'
     TabOrder = 10
@@ -527,7 +527,7 @@ object frmNewForm: TfrmNewForm
   object WxStaticText5: TWxStaticText
     Left = 0
     Top = 304
-    Width = 504
+    Width = 156
     Height = 16
     Caption = 'Progress - Optiona Data Hashes'
     TabOrder = 18
@@ -545,7 +545,7 @@ object frmNewForm: TfrmNewForm
   object WxStaticText6: TWxStaticText
     Left = 0
     Top = 336
-    Width = 504
+    Width = 168
     Height = 16
     Caption = 'Progress - Current file'#39's ED2K hash'
     TabOrder = 19
@@ -563,7 +563,7 @@ object frmNewForm: TfrmNewForm
   object WxStaticText7: TWxStaticText
     Left = 0
     Top = 368
-    Width = 504
+    Width = 156
     Height = 16
     Caption = 'Progress - Torrent Data Hashing'
     TabOrder = 20
@@ -637,5 +637,260 @@ object frmNewForm: TfrmNewForm
     Wx_IDValue = 1025
     Wx_StrechFactor = 0
     LastOrientation = wxGA_HORIZONTAL
+  end
+  object MakeSeparateTorrents: TWxCheckBox
+    Left = 176
+    Top = 72
+    Width = 328
+    Height = 16
+    Caption = 'Generate 1 Torrent per file'
+    TabOrder = 24
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_MAKESEPARATETORRENTS'
+    Wx_IDValue = 1026
+    Wx_StrechFactor = 0
+  end
+  object IncludeTorrents: TWxCheckBox
+    Left = 176
+    Top = 88
+    Width = 328
+    Height = 16
+    Caption = 'Include nested .torrent files in generation'
+    TabOrder = 25
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_INCLUDETORRENTS'
+    Wx_IDValue = 1027
+    Wx_StrechFactor = 0
+  end
+  object IncludeBlacklisted: TWxCheckBox
+    Left = 176
+    Top = 104
+    Width = 328
+    Height = 16
+    Caption = 'Include normally blacklisted files in generation'
+    TabOrder = 26
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_INCLUDEBLACKLISTED'
+    Wx_IDValue = 1028
+    Wx_StrechFactor = 0
+  end
+  object BlacklistingScreen: TWxButton
+    Left = 296
+    Top = 120
+    Width = 208
+    Height = 24
+    Caption = 'Blacklisted Files/Extensions'
+    TabOrder = 27
+    Wx_BKColor = clBlack
+    Wx_ButtonStyle = []
+    Wx_Class = 'wxButton'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_Default = False
+    Wx_EventList.Strings = (
+      'EVT_BUTTON:OnClick'
+      'EVT_UPDATE_UI:OnUpdateUI')
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_BLACKLISTINGSCREEN'
+    Wx_IDValue = 1029
+    Wx_StrechFactor = 0
+    Wx_Height = 24
+    Wx_Width = 208
+  end
+  object MultitrackerSettings: TWxButton
+    Left = 376
+    Top = 160
+    Width = 128
+    Height = 24
+    Caption = 'Multitracker Settings'
+    TabOrder = 28
+    Wx_BKColor = clBlack
+    Wx_ButtonStyle = []
+    Wx_Class = 'wxButton'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_Default = False
+    Wx_EventList.Strings = (
+      'EVT_BUTTON:OnClick'
+      'EVT_UPDATE_UI:OnUpdateUI')
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_MULTITRACKERSETTINGS'
+    Wx_IDValue = 1030
+    Wx_StrechFactor = 0
+    Wx_Height = 24
+    Wx_Width = 128
+  end
+  object ExitWithoutSave: TWxButton
+    Left = 360
+    Top = 400
+    Width = 144
+    Height = 24
+    Caption = 'Exit - Don'#39't Save Settings'
+    TabOrder = 29
+    Wx_BKColor = clBlack
+    Wx_ButtonStyle = []
+    Wx_Class = 'wxButton'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_Default = False
+    Wx_EventList.Strings = (
+      'EVT_BUTTON:OnClick'
+      'EVT_UPDATE_UI:OnUpdateUI')
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_EXITWITHOUTSAVE'
+    Wx_IDValue = 1031
+    Wx_StrechFactor = 0
+    Wx_Height = 24
+    Wx_Width = 144
+  end
+  object ExitWithSave: TWxButton
+    Left = 360
+    Top = 424
+    Width = 144
+    Height = 24
+    Caption = 'Exit - Save Settings'
+    TabOrder = 30
+    Wx_BKColor = clBlack
+    Wx_ButtonStyle = []
+    Wx_Class = 'wxButton'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_Default = False
+    Wx_EventList.Strings = (
+      'EVT_BUTTON:OnClick'
+      'EVT_UPDATE_UI:OnUpdateUI')
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_EXITWITHSAVE'
+    Wx_IDValue = 1032
+    Wx_StrechFactor = 0
+    Wx_Height = 24
+    Wx_Width = 144
+  end
+  object SaveSettings: TWxButton
+    Left = 0
+    Top = 424
+    Width = 144
+    Height = 24
+    Caption = 'Save All Settings'
+    TabOrder = 31
+    Wx_BKColor = clBlack
+    Wx_ButtonStyle = []
+    Wx_Class = 'wxButton'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_Default = False
+    Wx_EventList.Strings = (
+      'EVT_BUTTON:OnClick'
+      'EVT_UPDATE_UI:OnUpdateUI')
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_SAVESETTINGS'
+    Wx_IDValue = 1033
+    Wx_StrechFactor = 0
+    Wx_Height = 24
+    Wx_Width = 144
+  end
+  object AdvSet: TWxButton
+    Left = 0
+    Top = 400
+    Width = 144
+    Height = 24
+    Caption = 'Advanced Settings'
+    TabOrder = 32
+    Wx_BKColor = clBlack
+    Wx_ButtonStyle = []
+    Wx_Class = 'wxButton'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_Default = False
+    Wx_EventList.Strings = (
+      'EVT_BUTTON:OnClick'
+      'EVT_UPDATE_UI:OnUpdateUI')
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_ADVSET'
+    Wx_IDValue = 1034
+    Wx_StrechFactor = 0
+    Wx_Height = 24
+    Wx_Width = 144
+  end
+  object TorrentComment: TWxEdit
+    Left = 0
+    Top = 200
+    Width = 504
+    Height = 20
+    BevelInner = bvNone
+    BevelOuter = bvNone
+    Modified = False
+    TabOrder = 33
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxTextCtrl'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_EditStyle = []
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_TORRENTCOMMENT'
+    Wx_IDValue = 1035
+    Wx_StrechFactor = 0
+    Wx_MaxLength = 0
+  end
+  object MultiTrackerEnabled: TWxCheckBox
+    Left = 376
+    Top = 144
+    Width = 128
+    Height = 16
+    Caption = 'Multitracker Torrent'
+    TabOrder = 34
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_MULTITRACKERENABLED'
+    Wx_IDValue = 1036
+    Wx_StrechFactor = 0
+  end
+  object WxStaticText8: TWxStaticText
+    Left = 0
+    Top = 184
+    Width = 504
+    Height = 16
+    Caption = 'Torrent Comment'
+    TabOrder = 35
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxStaticText'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_WXSTATICTEXT8'
+    Wx_IDValue = 1037
+    Wx_LabelStyle = []
+    Wx_StrechFactor = 0
   end
 end
