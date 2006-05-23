@@ -44,12 +44,36 @@ void TorrentBuild_CPPDlg::CreateGUIControls(void)
 	//Add the custom code before or after the blocks
 	////GUI Items Creation Start
 
-	this->SetSize(8,8,512,472);
+	this->SetSize(8,8,512,480);
 	this->SetTitle(wxT("Build A Torrent"));
 	this->Center();
 	wxIcon TorrentBuild_CPPDlg_ICON (TorrentBuild_CPPDlg_XPM);
 	this->SetIcon(TorrentBuild_CPPDlg_XPM);
 	
+
+	WxStaticText8 = new wxStaticText(this, ID_WXSTATICTEXT8, wxT("Torrent Comment"), wxPoint(0,184), wxSize(504,16), 0, wxT("WxStaticText8"));
+
+	MultiTrackerEnabled = new wxCheckBox(this, ID_MULTITRACKERENABLED, wxT("Multitracker Torrent"), wxPoint(376,144), wxSize(128,16), 0, wxDefaultValidator, wxT("MultiTrackerEnabled"));
+
+	TorrentComment = new wxTextCtrl(this, ID_TORRENTCOMMENT, wxT(""), wxPoint(0,200), wxSize(504,20), 0, wxDefaultValidator, wxT("TorrentComment"));
+
+	AdvSet = new wxButton(this, ID_ADVSET, wxT("Advanced Settings"), wxPoint(0,400), wxSize(144,24), 0, wxDefaultValidator, wxT("AdvSet"));
+
+	SaveSettings = new wxButton(this, ID_SAVESETTINGS, wxT("Save All Settings"), wxPoint(0,424), wxSize(144,24), 0, wxDefaultValidator, wxT("SaveSettings"));
+
+	ExitWithSave = new wxButton(this, ID_EXITWITHSAVE, wxT("Exit - Save Settings"), wxPoint(360,424), wxSize(144,24), 0, wxDefaultValidator, wxT("ExitWithSave"));
+
+	ExitWithoutSave = new wxButton(this, ID_EXITWITHOUTSAVE, wxT("Exit - Don't Save Settings"), wxPoint(360,400), wxSize(144,24), 0, wxDefaultValidator, wxT("ExitWithoutSave"));
+
+	MultitrackerSettings = new wxButton(this, ID_MULTITRACKERSETTINGS, wxT("Multitracker Settings"), wxPoint(376,160), wxSize(128,24), 0, wxDefaultValidator, wxT("MultitrackerSettings"));
+
+	BlacklistingScreen = new wxButton(this, ID_BLACKLISTINGSCREEN, wxT("Blacklisted Files/Extensions"), wxPoint(296,120), wxSize(208,24), 0, wxDefaultValidator, wxT("BlacklistingScreen"));
+
+	IncludeBlacklisted = new wxCheckBox(this, ID_INCLUDEBLACKLISTED, wxT("Include normally blacklisted files in generation"), wxPoint(176,104), wxSize(328,16), 0, wxDefaultValidator, wxT("IncludeBlacklisted"));
+
+	IncludeTorrents = new wxCheckBox(this, ID_INCLUDETORRENTS, wxT("Include nested .torrent files in generation"), wxPoint(176,88), wxSize(328,16), 0, wxDefaultValidator, wxT("IncludeTorrents"));
+
+	MakeSeparateTorrents = new wxCheckBox(this, ID_MAKESEPARATETORRENTS, wxT("Generate 1 Torrent per file"), wxPoint(176,72), wxSize(328,16), 0, wxDefaultValidator, wxT("MakeSeparateTorrents"));
 
 	WxGauge2 = new wxGauge(this, ID_WXGAUGE2, 100, wxPoint(0,384), wxSize(504,16), wxGA_HORIZONTAL, wxDefaultValidator, wxT("WxGauge2"));
 	WxGauge2->SetRange(100);
@@ -63,11 +87,11 @@ void TorrentBuild_CPPDlg::CreateGUIControls(void)
 	OptionalHashProgress->SetRange(100);
 	OptionalHashProgress->SetValue(0);
 
-	WxStaticText7 = new wxStaticText(this, ID_WXSTATICTEXT7, wxT("Progress - Torrent Data Hashing"), wxPoint(0,368), wxSize(504,16), 0, wxT("WxStaticText7"));
+	WxStaticText7 = new wxStaticText(this, ID_WXSTATICTEXT7, wxT("Progress - Torrent Data Hashing"), wxPoint(0,368), wxSize(156,16), 0, wxT("WxStaticText7"));
 
-	WxStaticText6 = new wxStaticText(this, ID_WXSTATICTEXT6, wxT("Progress - Current file's ED2K hash"), wxPoint(0,336), wxSize(504,16), 0, wxT("WxStaticText6"));
+	WxStaticText6 = new wxStaticText(this, ID_WXSTATICTEXT6, wxT("Progress - Current file's ED2K hash"), wxPoint(0,336), wxSize(168,16), 0, wxT("WxStaticText6"));
 
-	WxStaticText5 = new wxStaticText(this, ID_WXSTATICTEXT5, wxT("Progress - Optiona Data Hashes"), wxPoint(0,304), wxSize(504,16), 0, wxT("WxStaticText5"));
+	WxStaticText5 = new wxStaticText(this, ID_WXSTATICTEXT5, wxT("Progress - Optiona Data Hashes"), wxPoint(0,304), wxSize(156,16), 0, wxT("WxStaticText5"));
 
 	BuildTorrentNow = new wxButton(this, ID_BUILDTORRENTNOW, wxT("Build Torrent"), wxPoint(360,272), wxSize(144,25), 0, wxDefaultValidator, wxT("BuildTorrentNow"));
 	BuildTorrentNow->SetDefault();
@@ -84,13 +108,13 @@ void TorrentBuild_CPPDlg::CreateGUIControls(void)
 
 	MakeMD5 = new wxCheckBox(this, ID_MD5, wxT("MD5"), wxPoint(0,240), wxSize(72,16), 0, wxDefaultValidator, wxT("MakeMD5"));
 
-	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, wxT("Optional hashes (Used by non-torrent peer to peer networks):"), wxPoint(0,224), wxSize(300,16), 0, wxT("WxStaticText4"));
+	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, wxT("Optional hashes (Used by non-torrent peer to peer networks):"), wxPoint(0,224), wxSize(310,16), 0, wxT("WxStaticText4"));
 
 	PrivateTorrent = new wxCheckBox(this, ID_PRIVATETORRENT, wxT("Private Torrent"), wxPoint(400,224), wxSize(104,16), 0, wxDefaultValidator, wxT("PrivateTorrent"));
 
 	AnnounceURL = new wxTextCtrl(this, ID_ANNOUNCEURL, wxT(""), wxPoint(0,160), wxSize(376,21), 0, wxDefaultValidator, wxT("AnnounceURL"));
 
-	WxStaticText3 = new wxStaticText(this, ID_WXSTATICTEXT3, wxT("Announce URL:"), wxPoint(0,144), wxSize(81,16), 0, wxT("WxStaticText3"));
+	WxStaticText3 = new wxStaticText(this, ID_WXSTATICTEXT3, wxT("Announce URL:"), wxPoint(0,144), wxSize(81,17), 0, wxT("WxStaticText3"));
 
 	AutomaticPieceSize = new wxCheckBox(this, ID_AUTOMATICPIECESIZE, wxT("Automatic Piece Size"), wxPoint(0,112), wxSize(136,16), 0, wxDefaultValidator, wxT("AutomaticPieceSize"));
 	AutomaticPieceSize->SetValue(true);
