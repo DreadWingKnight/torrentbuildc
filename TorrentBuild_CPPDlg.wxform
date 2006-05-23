@@ -186,7 +186,7 @@ object frmNewForm: TfrmNewForm
     Left = 0
     Top = 24
     Width = 504
-    Height = 20
+    Height = 21
     BevelInner = bvNone
     BevelOuter = bvNone
     Modified = False
@@ -254,8 +254,8 @@ object frmNewForm: TfrmNewForm
   object WxStaticText2: TWxStaticText
     Left = 0
     Top = 72
-    Width = 120
-    Height = 16
+    Width = 54
+    Height = 17
     Caption = 'Piece Size'
     TabOrder = 4
     Wx_BGColor = clBlack
@@ -295,5 +295,233 @@ object frmNewForm: TfrmNewForm
     Wx_IDName = 'ID_PIECESIZE'
     Wx_IDValue = 1007
     Wx_StrechFactor = 0
+  end
+  object AutomaticPieceSize: TWxCheckBox
+    Left = 0
+    Top = 112
+    Width = 136
+    Height = 16
+    Caption = 'Automatic Piece Size'
+    Checked = True
+    State = cbChecked
+    TabOrder = 6
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_AUTOMATICPIECESIZE'
+    Wx_IDValue = 1008
+    Wx_StrechFactor = 0
+  end
+  object WxStaticText3: TWxStaticText
+    Left = 0
+    Top = 144
+    Width = 376
+    Height = 16
+    Caption = 'Announce URL:'
+    TabOrder = 7
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxStaticText'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_WXSTATICTEXT3'
+    Wx_IDValue = 1009
+    Wx_LabelStyle = []
+    Wx_StrechFactor = 0
+  end
+  object AnnounceURL: TWxEdit
+    Left = 0
+    Top = 160
+    Width = 376
+    Height = 20
+    BevelInner = bvNone
+    BevelOuter = bvNone
+    Modified = False
+    TabOrder = 8
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxTextCtrl'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_EditStyle = []
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_ANNOUNCEURL'
+    Wx_IDValue = 1010
+    Wx_StrechFactor = 0
+    Wx_MaxLength = 0
+  end
+  object PrivateTorrent: TWxCheckBox
+    Left = 400
+    Top = 224
+    Width = 104
+    Height = 16
+    Caption = 'Private Torrent'
+    TabOrder = 9
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_PRIVATETORRENT'
+    Wx_IDValue = 1011
+    Wx_StrechFactor = 0
+  end
+  object WxStaticText4: TWxStaticText
+    Left = 0
+    Top = 224
+    Width = 344
+    Height = 16
+    Caption = 'Optional hashes (Used by non-torrent peer to peer networks):'
+    TabOrder = 10
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxStaticText'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_WXSTATICTEXT4'
+    Wx_IDValue = 1012
+    Wx_LabelStyle = []
+    Wx_StrechFactor = 0
+  end
+  object MakeMD5: TWxCheckBox
+    Left = 0
+    Top = 240
+    Width = 72
+    Height = 16
+    Caption = 'MD5'
+    TabOrder = 11
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_MD5'
+    Wx_IDValue = 1013
+    Wx_StrechFactor = 0
+  end
+  object MakeCRC32: TWxCheckBox
+    Left = 72
+    Top = 240
+    Width = 72
+    Height = 16
+    Caption = 'CRC32'
+    TabOrder = 12
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_MAKECRC32'
+    Wx_IDValue = 1014
+    Wx_StrechFactor = 0
+  end
+  object MakeSHA1: TWxCheckBox
+    Left = 0
+    Top = 256
+    Width = 72
+    Height = 16
+    Caption = 'SHA1'
+    TabOrder = 13
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_MAKESHA1'
+    Wx_IDValue = 1015
+    Wx_StrechFactor = 0
+  end
+  object MakeED2K: TWxCheckBox
+    Left = 72
+    Top = 256
+    Width = 72
+    Height = 16
+    Caption = 'ED2K'
+    TabOrder = 14
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_MAKEED2K'
+    Wx_IDValue = 1016
+    Wx_StrechFactor = 0
+  end
+  object MakeTiger: TWxCheckBox
+    Left = 144
+    Top = 240
+    Width = 72
+    Height = 16
+    Caption = 'TTH'
+    TabOrder = 15
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_MAKETIGER'
+    Wx_IDValue = 1017
+    Wx_StrechFactor = 0
+  end
+  object MakeExternals: TWxCheckBox
+    Left = 0
+    Top = 272
+    Width = 216
+    Height = 16
+    Caption = 'Make External Hash Files'
+    TabOrder = 16
+    Wx_BGColor = clBlack
+    Wx_CheckBoxStyle = []
+    Wx_Class = 'wxCheckBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_MAKEEXTERNALS'
+    Wx_IDValue = 1018
+    Wx_StrechFactor = 0
+  end
+  object BuildTorrentNow: TWxButton
+    Left = 360
+    Top = 272
+    Width = 144
+    Height = 25
+    Caption = 'Build Torrent'
+    Default = True
+    TabOrder = 17
+    Wx_BKColor = clBlack
+    Wx_ButtonStyle = []
+    Wx_Class = 'wxButton'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_Default = False
+    Wx_EventList.Strings = (
+      'EVT_BUTTON:OnClick'
+      'EVT_UPDATE_UI:OnUpdateUI')
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_BUILDTORRENTNOW'
+    Wx_IDValue = 1019
+    Wx_StrechFactor = 0
+    Wx_Height = 24
+    Wx_Width = 144
   end
 end
