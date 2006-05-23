@@ -165,8 +165,8 @@ object frmNewForm: TfrmNewForm
   object WxStaticText1: TWxStaticText
     Left = 0
     Top = 8
-    Width = 296
-    Height = 17
+    Width = 320
+    Height = 16
     Caption = 
       'Full path to the file or folder you want to generate torrent(s) ' +
       'for:'
@@ -255,7 +255,7 @@ object frmNewForm: TfrmNewForm
     Left = 0
     Top = 72
     Width = 54
-    Height = 17
+    Height = 16
     Caption = 'Piece Size'
     TabOrder = 4
     Wx_BGColor = clBlack
@@ -319,7 +319,7 @@ object frmNewForm: TfrmNewForm
   object WxStaticText3: TWxStaticText
     Left = 0
     Top = 144
-    Width = 376
+    Width = 81
     Height = 16
     Caption = 'Announce URL:'
     TabOrder = 7
@@ -338,7 +338,7 @@ object frmNewForm: TfrmNewForm
     Left = 0
     Top = 160
     Width = 376
-    Height = 20
+    Height = 21
     BevelInner = bvNone
     BevelOuter = bvNone
     Modified = False
@@ -376,7 +376,7 @@ object frmNewForm: TfrmNewForm
   object WxStaticText4: TWxStaticText
     Left = 0
     Top = 224
-    Width = 344
+    Width = 300
     Height = 16
     Caption = 'Optional hashes (Used by non-torrent peer to peer networks):'
     TabOrder = 10
@@ -521,7 +521,121 @@ object frmNewForm: TfrmNewForm
     Wx_IDName = 'ID_BUILDTORRENTNOW'
     Wx_IDValue = 1019
     Wx_StrechFactor = 0
-    Wx_Height = 24
+    Wx_Height = 25
     Wx_Width = 144
+  end
+  object WxStaticText5: TWxStaticText
+    Left = 0
+    Top = 304
+    Width = 504
+    Height = 16
+    Caption = 'Progress - Optiona Data Hashes'
+    TabOrder = 18
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxStaticText'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_WXSTATICTEXT5'
+    Wx_IDValue = 1020
+    Wx_LabelStyle = []
+    Wx_StrechFactor = 0
+  end
+  object WxStaticText6: TWxStaticText
+    Left = 0
+    Top = 336
+    Width = 504
+    Height = 16
+    Caption = 'Progress - Current file'#39's ED2K hash'
+    TabOrder = 19
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxStaticText'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_WXSTATICTEXT6'
+    Wx_IDValue = 1021
+    Wx_LabelStyle = []
+    Wx_StrechFactor = 0
+  end
+  object WxStaticText7: TWxStaticText
+    Left = 0
+    Top = 368
+    Width = 504
+    Height = 16
+    Caption = 'Progress - Torrent Data Hashing'
+    TabOrder = 20
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxStaticText'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_WXSTATICTEXT7'
+    Wx_IDValue = 1022
+    Wx_LabelStyle = []
+    Wx_StrechFactor = 0
+  end
+  object OptionalHashProgress: TWxGauge
+    Left = 0
+    Top = 320
+    Width = 504
+    Height = 16
+    Min = 0
+    Max = 100
+    TabOrder = 21
+    Wx_BGColor = clBlack
+    Wx_ControlOrientation = wxControlHorizontal
+    Wx_Class = 'wxGauge'
+    Wx_FGColor = clBlack
+    Wx_GaugeOrientation = wxGA_HORIZONTAL
+    Wx_GaugeStyle = []
+    Wx_GeneralStyle = []
+    Wx_IDName = 'ID_OPTIONALHASHPROGRESS'
+    Wx_IDValue = 1023
+    Wx_StrechFactor = 0
+    LastOrientation = wxGA_HORIZONTAL
+  end
+  object HashProgress: TWxGauge
+    Left = 0
+    Top = 352
+    Width = 504
+    Height = 16
+    Min = 0
+    Max = 100
+    TabOrder = 22
+    Wx_BGColor = clBlack
+    Wx_ControlOrientation = wxControlHorizontal
+    Wx_Class = 'wxGauge'
+    Wx_FGColor = clBlack
+    Wx_GaugeOrientation = wxGA_HORIZONTAL
+    Wx_GaugeStyle = []
+    Wx_GeneralStyle = []
+    Wx_IDName = 'ID_HASHPROGRESS'
+    Wx_IDValue = 1024
+    Wx_StrechFactor = 0
+    LastOrientation = wxGA_HORIZONTAL
+  end
+  object WxGauge2: TWxGauge
+    Left = 0
+    Top = 384
+    Width = 504
+    Height = 16
+    Min = 0
+    Max = 100
+    TabOrder = 23
+    Wx_BGColor = clBlack
+    Wx_ControlOrientation = wxControlHorizontal
+    Wx_Class = 'wxGauge'
+    Wx_FGColor = clBlack
+    Wx_GaugeOrientation = wxGA_HORIZONTAL
+    Wx_GaugeStyle = []
+    Wx_GeneralStyle = []
+    Wx_IDName = 'ID_WXGAUGE2'
+    Wx_IDValue = 1025
+    Wx_StrechFactor = 0
+    LastOrientation = wxGA_HORIZONTAL
   end
 end

@@ -24,6 +24,7 @@
 //Do not add custom headers
 //wxDev-C++ designer will remove them
 ////Header Include Start
+#include <wx/gauge.h>
 #include <wx/checkbox.h>
 #include <wx/combobox.h>
 #include <wx/button.h>
@@ -57,6 +58,12 @@ class TorrentBuild_CPPDlg : public wxDialog
 		//Do not add custom control declarations
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
+		wxGauge *WxGauge2;
+		wxGauge *HashProgress;
+		wxGauge *OptionalHashProgress;
+		wxStaticText *WxStaticText7;
+		wxStaticText *WxStaticText6;
+		wxStaticText *WxStaticText5;
 		wxButton *BuildTorrentNow;
 		wxCheckBox *MakeExternals;
 		wxCheckBox *MakeTiger;
@@ -85,6 +92,12 @@ class TorrentBuild_CPPDlg : public wxDialog
 		enum
 		{
 			////GUI Enum Control ID Start
+			ID_WXGAUGE2 = 1025,
+			ID_HASHPROGRESS = 1024,
+			ID_OPTIONALHASHPROGRESS = 1023,
+			ID_WXSTATICTEXT7 = 1022,
+			ID_WXSTATICTEXT6 = 1021,
+			ID_WXSTATICTEXT5 = 1020,
 			ID_BUILDTORRENTNOW = 1019,
 			ID_MAKEEXTERNALS = 1018,
 			ID_MAKETIGER = 1017,
