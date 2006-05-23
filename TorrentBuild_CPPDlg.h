@@ -24,6 +24,7 @@
 //Do not add custom headers
 //wxDev-C++ designer will remove them
 ////Header Include Start
+#include <wx/checkbox.h>
 #include <wx/combobox.h>
 #include <wx/button.h>
 #include <wx/textctrl.h>
@@ -56,6 +57,18 @@ class TorrentBuild_CPPDlg : public wxDialog
 		//Do not add custom control declarations
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
+		wxButton *BuildTorrentNow;
+		wxCheckBox *MakeExternals;
+		wxCheckBox *MakeTiger;
+		wxCheckBox *MakeED2K;
+		wxCheckBox *MakeSHA1;
+		wxCheckBox *MakeCRC32;
+		wxCheckBox *MakeMD5;
+		wxStaticText *WxStaticText4;
+		wxCheckBox *PrivateTorrent;
+		wxTextCtrl *AnnounceURL;
+		wxStaticText *WxStaticText3;
+		wxCheckBox *AutomaticPieceSize;
 		wxComboBox *PieceSize;
 		wxStaticText *WxStaticText2;
 		wxButton *SelectFolder;
@@ -72,6 +85,18 @@ class TorrentBuild_CPPDlg : public wxDialog
 		enum
 		{
 			////GUI Enum Control ID Start
+			ID_BUILDTORRENTNOW = 1019,
+			ID_MAKEEXTERNALS = 1018,
+			ID_MAKETIGER = 1017,
+			ID_MAKEED2K = 1016,
+			ID_MAKESHA1 = 1015,
+			ID_MAKECRC32 = 1014,
+			ID_MD5 = 1013,
+			ID_WXSTATICTEXT4 = 1012,
+			ID_PRIVATETORRENT = 1011,
+			ID_ANNOUNCEURL = 1010,
+			ID_WXSTATICTEXT3 = 1009,
+			ID_AUTOMATICPIECESIZE = 1008,
 			ID_PIECESIZE = 1007,
 			ID_WXSTATICTEXT2 = 1006,
 			ID_SELECTFOLDER = 1005,
