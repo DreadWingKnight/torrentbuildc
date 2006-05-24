@@ -1,7 +1,7 @@
 [Project]
 FileName=TorrentBuild_CPP.dev
 Name=TorrentBuild_CPP
-UnitCount=6
+UnitCount=8
 Type=0
 Ver=1
 ObjFiles=
@@ -104,4 +104,24 @@ OriginalFilename=
 ProductName=
 ProductVersion=
 AutoIncBuildNr=0
+
+[Unit7]
+FileName=TorrentBuild_CPPFunctions.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit8]
+FileName=TorrentBuild_CPPFunctions.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
 

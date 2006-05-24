@@ -24,6 +24,8 @@
 //Do not add custom headers
 //wxDev-C++ designer will remove them
 ////Header Include Start
+#include <wx/dirdlg.h>
+#include <wx/filedlg.h>
 #include <wx/gauge.h>
 #include <wx/checkbox.h>
 #include <wx/combobox.h>
@@ -58,6 +60,8 @@ class TorrentBuild_CPPDlg : public wxDialog
 		//Do not add custom control declarations
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
+		wxDirDialog *BrowseForFolder;
+		wxFileDialog *BrowseForFile;
 		wxStaticText *WxStaticText8;
 		wxCheckBox *MultiTrackerEnabled;
 		wxTextCtrl *TorrentComment;
@@ -147,6 +151,11 @@ class TorrentBuild_CPPDlg : public wxDialog
 	public:
 		void TorrentBuild_CPPDlgClose(wxCloseEvent& event);
 		void CreateGUIControls(void);
+		void ExitWithoutSaveClick(wxCommandEvent& event);
+		void ExitWithSaveClick(wxCommandEvent& event);
+		void SelectFileClick(wxCommandEvent& event);
+		void SelectFolderClick(wxCommandEvent& event);
+		void SaveSettingsClick(wxCommandEvent& event);
 };
 
 #endif
