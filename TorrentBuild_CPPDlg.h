@@ -156,6 +156,11 @@ class TorrentBuild_CPPDlg : public wxDialog
 		void SelectFileClick(wxCommandEvent& event);
 		void SelectFolderClick(wxCommandEvent& event);
 		void SaveSettingsClick(wxCommandEvent& event);
+		void LoadConfigValues();
+		void AutomaticPieceSizeClick(wxCommandEvent& event);
+		void PieceSizeUpdated(wxCommandEvent& event );
+		void PieceSizeUpdateUI(wxUpdateUIEvent& event);
+		void PieceSizeSelected(wxCommandEvent& event );
 };
 
 #endif

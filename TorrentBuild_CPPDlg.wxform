@@ -310,6 +310,7 @@ object frmNewForm: TfrmNewForm
     Checked = True
     State = cbChecked
     TabOrder = 6
+    EVT_CHECKBOX = 'AutomaticPieceSizeClick'
     Wx_BGColor = clBlack
     Wx_CheckBoxStyle = []
     Wx_Class = 'wxCheckBox'
@@ -448,7 +449,6 @@ object frmNewForm: TfrmNewForm
     Wx_CheckBoxStyle = []
     Wx_Class = 'wxCheckBox'
     Wx_ControlOrientation = wxControlVertical
-    Wx_Enabled = False
     Wx_FGColor = clBlack
     Wx_GeneralStyle = []
     Wx_Hidden = False
@@ -541,9 +541,10 @@ object frmNewForm: TfrmNewForm
   object WxStaticText5: TWxStaticText
     Left = 0
     Top = 304
-    Width = 156
+    Width = 160
     Height = 16
-    Caption = 'Progress - Optiona Data Hashes'
+    AutoSize = False
+    Caption = 'Progress - Optional Data Hashes'
     TabOrder = 18
     Wx_BGColor = clBlack
     Wx_Class = 'wxStaticText'
@@ -553,7 +554,7 @@ object frmNewForm: TfrmNewForm
     Wx_Hidden = False
     Wx_IDName = 'ID_WXSTATICTEXT5'
     Wx_IDValue = 1020
-    Wx_LabelStyle = []
+    Wx_LabelStyle = [wxST_NO_AUTORESIZE]
     Wx_StrechFactor = 0
   end
   object WxStaticText6: TWxStaticText

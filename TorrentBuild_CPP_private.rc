@@ -3,3 +3,5 @@
 
 #include "TorrentBuild_CPPApp.rc"
 
+A ICON MOVEABLE PURE LOADONCALL DISCARDABLE "TorrentBuild_CPP.ico"
+
