@@ -7,6 +7,9 @@
 //
 //---------------------------------------------------------------------------
 
+#include "atom.h"
+#include "bencode.h"
+
 #ifndef __TorrentBuild_CPPApp_h__
 #define __TorrentBuild_CPPApp_h__
 

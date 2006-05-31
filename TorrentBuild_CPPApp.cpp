@@ -7,6 +7,7 @@
 //
 //---------------------------------------------------------------------------
 
+#include "TorrentBuild_CPPFunctions.h"
 #include "TorrentBuild_CPPApp.h"
 #include "TorrentBuild_CPPDlg.h"
 

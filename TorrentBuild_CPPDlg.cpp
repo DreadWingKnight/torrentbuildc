@@ -6,12 +6,15 @@
 // Description: 
 //
 //---------------------------------------------------------------------------
-#include "TorrentBuild_CPPFunctions.h"
+
+#include "TorrentBuild_CPPApp.h"
+
 #include "atom.h"
 #include "bencode.h"
 #include "util.h"
 #include "stringsplit.h"
 
+#include "TorrentBuild_CPPFunctions.h"
 #include "TorrentBuild_CPPDlg.h"
 
 //Do not add custom headers
@@ -34,6 +37,7 @@ BEGIN_EVENT_TABLE(TorrentBuild_CPPDlg,wxDialog)
 	EVT_BUTTON(ID_SAVESETTINGS,TorrentBuild_CPPDlg::SaveSettingsClick)
 	EVT_BUTTON(ID_EXITWITHSAVE,TorrentBuild_CPPDlg::ExitWithSaveClick)
 	EVT_BUTTON(ID_EXITWITHOUTSAVE,TorrentBuild_CPPDlg::ExitWithoutSaveClick)
+	EVT_CHECKBOX(ID_AUTOMATICPIECESIZE,TorrentBuild_CPPDlg::AutomaticPieceSizeClick)
 	EVT_BUTTON(ID_SELECTFOLDER,TorrentBuild_CPPDlg::SelectFolderClick)
 	EVT_BUTTON(ID_SELECTFILE,TorrentBuild_CPPDlg::SelectFileClick)
 END_EVENT_TABLE()
@@ -43,6 +47,11 @@ TorrentBuild_CPPDlg::TorrentBuild_CPPDlg(wxWindow *parent, wxWindowID id, const 
 : wxDialog(parent, id, title, position, size, style)
 {
     CreateGUIControls();
+    LoadConfigValues();
+    if( AutomaticPieceSize->GetValue() == true )
+        PieceSize->Enable(false);
+    else
+        PieceSize->Enable(true);
 }
 
 TorrentBuild_CPPDlg::~TorrentBuild_CPPDlg() {} 
@@ -112,7 +121,7 @@ void TorrentBuild_CPPDlg::CreateGUIControls(void)
 
 	WxStaticText6 = new wxStaticText(this, ID_WXSTATICTEXT6, wxT("Progress - Current file's ED2K hash"), wxPoint(0,336), wxSize(168,16), wxST_NO_AUTORESIZE, wxT("WxStaticText6"));
 
-	WxStaticText5 = new wxStaticText(this, ID_WXSTATICTEXT5, wxT("Progress - Optiona Data Hashes"), wxPoint(0,304), wxSize(156,16), 0, wxT("WxStaticText5"));
+	WxStaticText5 = new wxStaticText(this, ID_WXSTATICTEXT5, wxT("Progress - Optional Data Hashes"), wxPoint(0,304), wxSize(160,16), wxST_NO_AUTORESIZE, wxT("WxStaticText5"));
 
 	BuildTorrentNow = new wxButton(this, ID_BUILDTORRENTNOW, wxT("Build Torrent"), wxPoint(360,272), wxSize(144,25), 0, wxDefaultValidator, wxT("BuildTorrentNow"));
 	BuildTorrentNow->SetDefault();
@@ -127,7 +136,6 @@ void TorrentBuild_CPPDlg::CreateGUIControls(void)
 	MakeED2K->Enable(false);
 
 	MakeSHA1 = new wxCheckBox(this, ID_MAKESHA1, wxT("SHA1"), wxPoint(0,256), wxSize(72,16), 0, wxDefaultValidator, wxT("MakeSHA1"));
-	MakeSHA1->Enable(false);
 
 	MakeCRC32 = new wxCheckBox(this, ID_MAKECRC32, wxT("CRC32"), wxPoint(72,240), wxSize(72,16), 0, wxDefaultValidator, wxT("MakeCRC32"));
 	MakeCRC32->Enable(false);
@@ -216,5 +224,100 @@ void TorrentBuild_CPPDlg::SelectFolderClick(wxCommandEvent& event)
  */
 void TorrentBuild_CPPDlg::SaveSettingsClick(wxCommandEvent& event)
 {
-	// insert your code here
+	//CAtomLong *pSHA1;
+	//CAtomLong *pMD5;
+	//CAtomLong *pED2K;
+	//CAtomLong *pTTH;
+	//CAtomLong *pCRC32;
+	//CAtomLong *pExternals;
+	//CAtomLong *pAutoPiece;
+	//CAtomLong *pPieceSize;
+	//pSHA1->setValue( MakeSHA1->GetValue() );
+	//pMD5->setValue( MakeMD5->GetValue() );
+	//pED2K->setValue( MakeED2K->GetValue() );
+	//pTTH->setValue( MakeTiger->GetValue() );
+	//pCRC32->setValue( MakeCRC32->GetValue() );
+	//pExternals->setValue( MakeExternals->GetValue() );
+	//pAutoPiece->setValue( AutomaticPieceSize->GetValue() );
+	//pPieceSize->setValue( UTIL_StringTo64(PieceSize->GetValue() ) );
+	CAtom *pConfigIn = GetConfig();
+	CAtomDicti *pConfiguration;
+	if( pConfigIn && pConfigIn->isDicti() )
+	    pConfiguration = (CAtomDicti *)pConfigIn;
+	pConfiguration->setItem( "tracker", new CAtomString(AnnounceURL->GetValue().ToAscii() ) );
+	pConfiguration->setItem( "comment", new CAtomString(TorrentComment->GetValue().ToAscii() ) );
+	pConfiguration->setItem( "sha1", new CAtomLong(MakeSHA1->GetValue() ) );
+	pConfiguration->setItem( "md5", new CAtomLong(MakeMD5->GetValue() ) );
+	pConfiguration->setItem( "ed2k", new CAtomLong(MakeED2K->GetValue() ) );
+	pConfiguration->setItem( "tiger", new CAtomLong( MakeTiger->GetValue() ) );
+	pConfiguration->setItem( "crc32", new CAtomLong( MakeCRC32->GetValue() ) );
+	pConfiguration->setItem( "externals", new CAtomLong( MakeExternals->GetValue() ));
+	pConfiguration->setItem( "autopiece", new CAtomLong( AutomaticPieceSize->GetValue() ) );
+	pConfiguration->setItem( "piecesize", new CAtomLong( UTIL_StringTo64(PieceSize->GetValue() ) ) );
+	UTIL_MakeFile( "tgen.configure", Encode( pConfiguration ) );
+}
+
+void TorrentBuild_CPPDlg::LoadConfigValues()
+{
+     CAtom *pConfigValue = GetConfig();
+     if( pConfigValue && pConfigValue->isDicti() )
+     {
+         CAtom *pAnnounce = ((CAtomDicti *)pConfigValue)->getItem("tracker");
+         if( pAnnounce && ((CAtomString *)pAnnounce)->getValue() != string() )
+             AnnounceURL->SetValue( ((CAtomString *)pAnnounce)->getValue() );
+             
+         CAtom *pComment = ((CAtomDicti *)pConfigValue)->getItem("comment");
+         if( pComment && ((CAtomString *)pComment)->getValue() != string() )
+             TorrentComment->SetValue( ((CAtomString *)pComment)->getValue() );
+
+         CAtom *pSHA1 = ((CAtomDicti *)pConfigValue)->getItem("sha1");
+         CAtom *pMD5 = ((CAtomDicti *)pConfigValue)->getItem("md5");
+         CAtom *pED2K = ((CAtomDicti *)pConfigValue)->getItem("ed2k");
+         CAtom *pTTH = ((CAtomDicti *)pConfigValue)->getItem("tiger");
+         CAtom *pCRC32 = ((CAtomDicti *)pConfigValue)->getItem("crc");
+         CAtom *pExternals = ((CAtomDicti *)pConfigValue)->getItem("externals");
+         CAtom *pAutoPiece = ((CAtomDicti *)pConfigValue)->getItem("autopiece");
+         CAtom *pPieceSize = ((CAtomDicti *)pConfigValue)->getItem("piecesize");
+         if( pSHA1 && pSHA1->isLong() && ((CAtomLong *)pSHA1)->getValue() == -1 ) MakeSHA1->SetValue( true );
+         if( pMD5 && pMD5->isLong() && ((CAtomLong *)pMD5)->getValue() == -1 ) MakeMD5->SetValue( true );
+         if( pED2K && pED2K->isLong() && ((CAtomLong *)pED2K)->getValue() == -1 ) MakeED2K->SetValue( true );
+         if( pTTH && pTTH->isLong() && ((CAtomLong *)pTTH)->getValue() == -1 ) MakeTiger->SetValue( true );
+         if( pCRC32 && pCRC32->isLong() && ((CAtomLong *)pCRC32)->getValue() == -1 ) MakeCRC32->SetValue( true );
+         if( pPieceSize && pPieceSize->isLong() ) PieceSize->SetValue( UTIL_LongToString(((CAtomLong *)pPieceSize)->getValue()) );
+         if( pExternals && pExternals->isLong() && ((CAtomLong *)pExternals)->getValue() == -1 ) MakeExternals->SetValue( true );
+         if( pAutoPiece && pAutoPiece->isLong() && ((CAtomLong *)pAutoPiece)->getValue() == -1) AutomaticPieceSize->SetValue( true );
+     }     
+}
+
+/*
+ * AutomaticPieceSizeClick
+ */
+void TorrentBuild_CPPDlg::AutomaticPieceSizeClick(wxCommandEvent& event)
+{
+    if( AutomaticPieceSize->GetValue() == true )
+        PieceSize->Enable(false);
+    else
+        PieceSize->Enable(true);
+}
+
+/*
+ * PieceSizeUpdated
+ */
+void TorrentBuild_CPPDlg::PieceSizeUpdated(wxCommandEvent& event )
+{
+
+}
+
+/*
+ * PieceSizeUpdateUI
+ */
+void TorrentBuild_CPPDlg::PieceSizeUpdateUI(wxUpdateUIEvent& event)
+{
+}
+
+/*
+ * PieceSizeSelected
+ */
+void TorrentBuild_CPPDlg::PieceSizeSelected(wxCommandEvent& event )
+{
 }
