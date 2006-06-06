@@ -521,6 +521,7 @@ object frmNewForm: TfrmNewForm
     Caption = 'Build Torrent'
     Default = True
     TabOrder = 17
+    EVT_BUTTON = 'BuildTorrentNowClick'
     Wx_BKColor = clBlack
     Wx_ButtonStyle = []
     Wx_Class = 'wxButton'

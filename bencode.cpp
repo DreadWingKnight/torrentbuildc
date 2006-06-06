@@ -24,8 +24,6 @@
 #include "atom.h"
 #include "bencode.h"
 
-using namespace std;
-
 string EncodeInt( const CAtomInt &x )
 {
 	char pBuf[128];
@@ -249,7 +247,8 @@ CAtomDicti *DecodeDicti( const string &x, unsigned long iStart )
 	while( i < x.size( ) && x[i] != 'e' )
 	{
 		CAtom *pKey = Decode( x, i );
-		if( pKey && static_cast<CAtomString*>( pKey ) )
+
+		if( pKey && dynamic_cast<CAtomString *>( pKey ) )
 		{
 			i += pKey->EncodedLength( );
 

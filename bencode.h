@@ -4,30 +4,22 @@
 
 #ifndef BENCODE_H
  #define BENCODE_H
-#include <stdio.h>
-#include <time.h>
-#include <map>
-#include <string>
-#include <vector>
-#include <utility>
- typedef __int64 int64;
- typedef unsigned __int64 uint64;
 
-std::string EncodeInt( const CAtomInt &x );
-std::string EncodeLong( const CAtomLong &x );
-std::string EncodeString( const CAtomString &x );
-std::string EncodeList( const CAtomList &x );
-std::string EncodeDicti( const CAtomDicti &x );
-std::string Encode( CAtom *pAtom );
+string EncodeInt( const CAtomInt &x );
+string EncodeLong( const CAtomLong &x );
+string EncodeString( const CAtomString &x );
+string EncodeList( const CAtomList &x );
+string EncodeDicti( const CAtomDicti &x );
+string Encode( CAtom *pAtom );
 
 // the decode functions allocate memory, so be SURE to delete it
 
 // CAtomInt *DecodeInt( const string &x, unsigned long iStart = 0 );
-CAtomLong *DecodeLong( const std::string &x, unsigned long iStart = 0 );
-CAtomString *DecodeString( const std::string &x, unsigned long iStart = 0 );
-CAtomList *DecodeList( const std::string &x, unsigned long iStart = 0 );
-CAtomDicti *DecodeDicti( const std::string &x, unsigned long iStart = 0 );
-CAtom *Decode( const std::string &x, unsigned long iStart = 0 );
+CAtomLong *DecodeLong( const string &x, unsigned long iStart = 0 );
+CAtomString *DecodeString( const string &x, unsigned long iStart = 0 );
+CAtomList *DecodeList( const string &x, unsigned long iStart = 0 );
+CAtomDicti *DecodeDicti( const string &x, unsigned long iStart = 0 );
+CAtom *Decode( const string &x, unsigned long iStart = 0 );
 
 CAtom *DecodeFile( const char *szFile );
 
