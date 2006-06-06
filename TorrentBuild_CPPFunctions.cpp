@@ -18,7 +18,7 @@
 
 #include "TorrentBuild_CPPFunctions.h"
 
-void MakeTorrentFromFile()
+void MakeTorrentFromFile( string fileToMake )
 {
      
 }

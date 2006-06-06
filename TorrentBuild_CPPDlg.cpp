@@ -37,6 +37,7 @@ BEGIN_EVENT_TABLE(TorrentBuild_CPPDlg,wxDialog)
 	EVT_BUTTON(ID_SAVESETTINGS,TorrentBuild_CPPDlg::SaveSettingsClick)
 	EVT_BUTTON(ID_EXITWITHSAVE,TorrentBuild_CPPDlg::ExitWithSaveClick)
 	EVT_BUTTON(ID_EXITWITHOUTSAVE,TorrentBuild_CPPDlg::ExitWithoutSaveClick)
+	EVT_BUTTON(ID_BUILDTORRENTNOW,TorrentBuild_CPPDlg::BuildTorrentNowClick)
 	EVT_CHECKBOX(ID_AUTOMATICPIECESIZE,TorrentBuild_CPPDlg::AutomaticPieceSizeClick)
 	EVT_BUTTON(ID_SELECTFOLDER,TorrentBuild_CPPDlg::SelectFolderClick)
 	EVT_BUTTON(ID_SELECTFILE,TorrentBuild_CPPDlg::SelectFileClick)
@@ -241,7 +242,7 @@ void TorrentBuild_CPPDlg::SaveSettingsClick(wxCommandEvent& event)
 	//pAutoPiece->setValue( AutomaticPieceSize->GetValue() );
 	//pPieceSize->setValue( UTIL_StringTo64(PieceSize->GetValue() ) );
 	CAtom *pConfigIn = GetConfig();
-	CAtomDicti *pConfiguration;
+	CAtomDicti *pConfiguration = new CAtomDicti();
 	if( pConfigIn && pConfigIn->isDicti() )
 	    pConfiguration = (CAtomDicti *)pConfigIn;
 	pConfiguration->setItem( "tracker", new CAtomString(AnnounceURL->GetValue().ToAscii() ) );
@@ -278,14 +279,14 @@ void TorrentBuild_CPPDlg::LoadConfigValues()
          CAtom *pExternals = ((CAtomDicti *)pConfigValue)->getItem("externals");
          CAtom *pAutoPiece = ((CAtomDicti *)pConfigValue)->getItem("autopiece");
          CAtom *pPieceSize = ((CAtomDicti *)pConfigValue)->getItem("piecesize");
-         if( pSHA1 && pSHA1->isLong() && ((CAtomLong *)pSHA1)->getValue() == -1 ) MakeSHA1->SetValue( true );
-         if( pMD5 && pMD5->isLong() && ((CAtomLong *)pMD5)->getValue() == -1 ) MakeMD5->SetValue( true );
-         if( pED2K && pED2K->isLong() && ((CAtomLong *)pED2K)->getValue() == -1 ) MakeED2K->SetValue( true );
-         if( pTTH && pTTH->isLong() && ((CAtomLong *)pTTH)->getValue() == -1 ) MakeTiger->SetValue( true );
-         if( pCRC32 && pCRC32->isLong() && ((CAtomLong *)pCRC32)->getValue() == -1 ) MakeCRC32->SetValue( true );
+         if( pSHA1 && pSHA1->isLong() && ((CAtomLong *)pSHA1)->getValue() != 0 ) MakeSHA1->SetValue( true );
+         if( pMD5 && pMD5->isLong() && ((CAtomLong *)pMD5)->getValue() != 0 ) MakeMD5->SetValue( true );
+         if( pED2K && pED2K->isLong() && ((CAtomLong *)pED2K)->getValue() != 0 ) MakeED2K->SetValue( true );
+         if( pTTH && pTTH->isLong() && ((CAtomLong *)pTTH)->getValue() != 0 ) MakeTiger->SetValue( true );
+         if( pCRC32 && pCRC32->isLong() && ((CAtomLong *)pCRC32)->getValue() != 0 ) MakeCRC32->SetValue( true );
          if( pPieceSize && pPieceSize->isLong() ) PieceSize->SetValue( UTIL_LongToString(((CAtomLong *)pPieceSize)->getValue()) );
-         if( pExternals && pExternals->isLong() && ((CAtomLong *)pExternals)->getValue() == -1 ) MakeExternals->SetValue( true );
-         if( pAutoPiece && pAutoPiece->isLong() && ((CAtomLong *)pAutoPiece)->getValue() == -1) AutomaticPieceSize->SetValue( true );
+         if( pExternals && pExternals->isLong() && ((CAtomLong *)pExternals)->getValue() != 0 ) MakeExternals->SetValue( true );
+         if( pAutoPiece && pAutoPiece->isLong() && ((CAtomLong *)pAutoPiece)->getValue() != 0 ) AutomaticPieceSize->SetValue( true );
      }     
 }
 
@@ -320,4 +321,12 @@ void TorrentBuild_CPPDlg::PieceSizeUpdateUI(wxUpdateUIEvent& event)
  */
 void TorrentBuild_CPPDlg::PieceSizeSelected(wxCommandEvent& event )
 {
+}
+
+/*
+ * BuildTorrentNowClick
+ */
+void TorrentBuild_CPPDlg::BuildTorrentNowClick(wxCommandEvent& event)
+{
+	// insert your code here
 }

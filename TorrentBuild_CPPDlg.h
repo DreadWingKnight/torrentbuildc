@@ -161,6 +161,7 @@ class TorrentBuild_CPPDlg : public wxDialog
 		void PieceSizeUpdated(wxCommandEvent& event );
 		void PieceSizeUpdateUI(wxUpdateUIEvent& event);
 		void PieceSizeSelected(wxCommandEvent& event );
+		void BuildTorrentNowClick(wxCommandEvent& event);
 };
 
 #endif

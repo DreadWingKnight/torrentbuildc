@@ -11,7 +11,7 @@ LIBS =  -L"C:/Dev-Cpp/lib" -mwindows -lwxmsw26 -lwxmsw26_gl -lwxtiff -lwxjpeg -l
 INCS =  -I"C:/Dev-Cpp/include" 
 CXXINCS =  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include"  -I"C:/Dev-Cpp/include/wx/msw"  -I"C:/Dev-Cpp/include/wx/generic"  -I"C:/Dev-Cpp/include/wx/animate"  -I"C:/Dev-Cpp/include/wx/fl"  -I"C:/Dev-Cpp/include/wx/gizmos"  -I"C:/Dev-Cpp/include/wx/html"  -I"C:/Dev-Cpp/include/wx/mmedia"  -I"C:/Dev-Cpp/include/wx/net"  -I"C:/Dev-Cpp/include/wx/ogl"  -I"C:/Dev-Cpp/include/wx/plot"  -I"C:/Dev-Cpp/include/wx/protocol"  -I"C:/Dev-Cpp/include/wx/stc"  -I"C:/Dev-Cpp/include/wx/svg"  -I"C:/Dev-Cpp/include/wx/xml"  -I"C:/Dev-Cpp/include/wx/xrc"  -I"C:/Dev-Cpp/include/wx" 
 BIN  = TorrentBuild_CPP.exe
-CXXFLAGS = $(CXXINCS)-fno-rtti -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__   -g3
+CXXFLAGS = $(CXXINCS)-fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__   -g3
 CFLAGS = $(INCS)-fno-rtti -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -fvtable-thunks -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__   -g3
 RM = rm -f
 

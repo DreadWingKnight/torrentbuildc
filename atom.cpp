@@ -23,8 +23,6 @@
 
 #include "atom.h"
 
-using namespace std;
-
 //
 // CAtomInt
 //

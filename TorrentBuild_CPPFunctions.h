@@ -13,7 +13,7 @@
 #ifndef __TorrentBuild_CPPFunctions_h__
 #define __TorrentBuild_CPPFunctions_h__
 
-void MakeTorrentFromFile();
+void MakeTorrentFromFile( string fileToMake );
 CAtom *GetConfig();
 int GetAutoPieceSize ( long TotalSize );
 #endif

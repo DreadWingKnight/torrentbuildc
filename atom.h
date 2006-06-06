@@ -11,8 +11,16 @@
 #include <vector>
 #include <utility>
 
+using namespace std;
+
+#ifdef WIN32
  typedef __int64 int64;
  typedef unsigned __int64 uint64;
+#else
+ typedef long long int64;
+ typedef unsigned long long uint64;
+#endif
+
 
 class CAtom
 {
@@ -25,7 +33,7 @@ public:
 
 	virtual int EncodedLength( ) = 0;
 	virtual int Length( ) = 0;
-	virtual std::string toString( ) = 0;
+	virtual string toString( ) = 0;
 };
 
 class CAtomInt : public CAtom
@@ -38,7 +46,7 @@ public:
 
 	virtual int EncodedLength( );
 	virtual int Length( );
-	virtual std::string toString( );
+	virtual string toString( );
 
 	int getValue( ) const;
 	void setValue( int iInt );
@@ -59,7 +67,7 @@ public:
 
 	virtual int EncodedLength( );
 	virtual int Length( );
-	virtual std::string toString( );
+	virtual string toString( );
 
 	int64 getValue( ) const;
 	void setValue( int64 iLong );
@@ -72,26 +80,26 @@ class CAtomString : public CAtom
 {
 public:
 	CAtomString( );
-	CAtomString( std::string strString );
+	CAtomString( string strString );
 	CAtomString( const CAtomString &c );
 	virtual ~CAtomString( );
 
 	virtual int EncodedLength( );
 	virtual int Length( );
-	virtual std::string toString( );
+	virtual string toString( );
 
-	std::string getValue( ) const;
-	void setValue( std::string strString );
+	string getValue( ) const;
+	void setValue( string strString );
 
 private:
-	std::string m_strString;
+	string m_strString;
 };
 
 class CAtomList : public CAtom
 {
 public:
 	CAtomList( );
-	CAtomList( std::vector<CAtom *> vecList );
+	CAtomList( vector<CAtom *> vecList );
 	CAtomList( const CAtomList &c );
 	virtual ~CAtomList( );
 
@@ -99,22 +107,22 @@ public:
 
 	virtual int EncodedLength( );
 	virtual int Length( );
-	virtual std::string toString( );
+	virtual string toString( );
 
 	virtual bool isEmpty( );
 	virtual void clear( );
 
 	virtual void Randomize( );
 
-	std::vector<CAtom *> getValue( ) const;
-	std::vector<CAtom *> *getValuePtr( ) const;
-	void setValue( std::vector<CAtom *> vecList );
+	vector<CAtom *> getValue( ) const;
+	vector<CAtom *> *getValuePtr( ) const;
+	void setValue( vector<CAtom *> vecList );
 
 	void delItem( CAtom *atmItem );
 	void addItem( CAtom *atmItem );
 
 private:
-	std::vector<CAtom *> m_vecList;
+	vector<CAtom *> m_vecList;
 };
 
 class CAtomDicti : public CAtom
@@ -128,21 +136,21 @@ public:
 
 	virtual int EncodedLength( );
 	virtual int Length( );
-	virtual std::string toString( );
+	virtual string toString( );
 
 	virtual bool isEmpty( );
 	virtual void clear( );
 
-	std::map<std::string, CAtom *> *getValuePtr( ) const;
-	void setValue( std::map<std::string, CAtom *> mapDicti );
+	map<string, CAtom *> *getValuePtr( ) const;
+	void setValue( map<string, CAtom *> mapDicti );
 
-	void delItem( std::string strKey );
-	CAtom *getItem( std::string strKey );
-	CAtom *getItem( std::string strKey, CAtom *pReturn );
-	void setItem( std::string strKey, CAtom *pValue );
+	void delItem( string strKey );
+	CAtom *getItem( string strKey );
+	CAtom *getItem( string strKey, CAtom *pReturn );
+	void setItem( string strKey, CAtom *pValue );
 
 private:
-	std::map<std::string, CAtom *> m_mapDicti;
+	map<string, CAtom *> m_mapDicti;
 };
 
 #endif
