@@ -162,6 +162,9 @@ class TorrentBuild_CPPDlg : public wxDialog
 		void PieceSizeUpdateUI(wxUpdateUIEvent& event);
 		void PieceSizeSelected(wxCommandEvent& event );
 		void BuildTorrentNowClick(wxCommandEvent& event);
+        void MakeTorrentFromFile( string fileToMake , int pieceSize, string announceurl = string() , CAtom *announcelist = NULL,
+        string comment = string(), bool privateTorrent = false, bool gensha1 = false, bool gencrc32 = false,
+        bool genmd5 = false, bool gened2k = false, bool gentth = false, bool genexternals = false);
 };
 
 #endif
