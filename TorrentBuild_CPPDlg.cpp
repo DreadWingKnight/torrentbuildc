@@ -142,7 +142,6 @@ void TorrentBuild_CPPDlg::CreateGUIControls(void)
 	MakeCRC32->Enable(false);
 
 	MakeMD5 = new wxCheckBox(this, ID_MD5, wxT("MD5"), wxPoint(0,240), wxSize(72,16), 0, wxDefaultValidator, wxT("MakeMD5"));
-	MakeMD5->Enable(false);
 
 	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, wxT("Optional hashes (Used by non-torrent peer to peer networks):"), wxPoint(0,224), wxSize(300,16), wxST_NO_AUTORESIZE, wxT("WxStaticText4"));
 
@@ -225,22 +224,6 @@ void TorrentBuild_CPPDlg::SelectFolderClick(wxCommandEvent& event)
  */
 void TorrentBuild_CPPDlg::SaveSettingsClick(wxCommandEvent& event)
 {
-	//CAtomLong *pSHA1;
-	//CAtomLong *pMD5;
-	//CAtomLong *pED2K;
-	//CAtomLong *pTTH;
-	//CAtomLong *pCRC32;
-	//CAtomLong *pExternals;
-	//CAtomLong *pAutoPiece;
-	//CAtomLong *pPieceSize;
-	//pSHA1->setValue( MakeSHA1->GetValue() );
-	//pMD5->setValue( MakeMD5->GetValue() );
-	//pED2K->setValue( MakeED2K->GetValue() );
-	//pTTH->setValue( MakeTiger->GetValue() );
-	//pCRC32->setValue( MakeCRC32->GetValue() );
-	//pExternals->setValue( MakeExternals->GetValue() );
-	//pAutoPiece->setValue( AutomaticPieceSize->GetValue() );
-	//pPieceSize->setValue( UTIL_StringTo64(PieceSize->GetValue() ) );
 	CAtom *pConfigIn = GetConfig();
 	CAtomDicti *pConfiguration = new CAtomDicti();
 	if( pConfigIn && pConfigIn->isDicti() )
@@ -328,5 +311,27 @@ void TorrentBuild_CPPDlg::PieceSizeSelected(wxCommandEvent& event )
  */
 void TorrentBuild_CPPDlg::BuildTorrentNowClick(wxCommandEvent& event)
 {
-	// insert your code here
+    int pieceSizeToUse;
+        
+	if( UTIL_CheckFile( FileNameToMake->GetValue() ) );
+	{
+        if( AutomaticPieceSize->GetValue() == true )
+            pieceSizeToUse = GetAutoPieceSize( FileSize( FileNameToMake->GetValue() ) );
+        else
+            pieceSizeToUse = UTIL_StringTo64( PieceSize->GetValue().ToAscii() );
+            
+        int OptionalHashes = 0;
+        if( MakeSHA1->GetValue() == true ) OptionalHashes++;
+//        if( MakeMD5->GetValue() == true ) OptionalHashes++;
+//        if( MakeCRC32->GetValue() == true ) OptionalHashes++;
+//        if( MakeED2K->GetValue() == true ) OptionalHashes++;
+//        if( MakeTiger->GetValue() == true ) OptionalHashes++;
+        
+        OptionalHashProgress->SetRange( OptionalHashes );
+
+	    MakeTorrentFromFile( string( FileNameToMake->GetValue() ), pieceSizeToUse, AnnounceURL->GetValue().ToAscii(),
+        NULL, TorrentComment->GetValue().ToAscii(), PrivateTorrent->GetValue(), MakeSHA1->GetValue(), MakeCRC32->GetValue(),
+        MakeMD5->GetValue(), MakeED2K->GetValue(), MakeTiger->GetValue(), MakeExternals->GetValue() );
+    }
 }
+

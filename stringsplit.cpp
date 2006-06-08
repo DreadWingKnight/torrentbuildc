@@ -42,7 +42,7 @@ int StringUtils::SplitString(const string& input,
         return 0;
     }
 
-    for( int i=0; i <= (int)positions.size(); ++i )
+    for( unsigned int i=0; i <= positions.size(); ++i )
     {
         string s("");
         if( i == 0 ) 
