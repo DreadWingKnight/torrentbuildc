@@ -4,10 +4,12 @@
 #include "bencode.h"
 #include "util.h"
 #include "stringsplit.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "TorrentBuild_CPPFunctions.h"
 #include "TorrentBuild_CPPDlg.h"
-
+#include "TorrentBuild_CPP_private.h"
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -63,29 +65,37 @@ bool genmd5, bool gened2k, bool gentth, bool genexternals)
 */
 
      // Begin File Piece Hashing
-   	 ifstream filetoopen;
- 	 filetoopen.open( fileToMake.c_str() );
- 	 string pieces;
-     char * memblock;
-   	 CSHA1 *piecesha1 = new CSHA1();
-   	 int piececount;
- 	 while ( filetoopen.eof() == false )
+   	 FILE *filetoopen;
+ 	 filetoopen = fopen( fileToMake.c_str() , "rb" );
+ 	 string pieces = string();
+   	 int piececount = 0;
+   	 bool breaknow = false;
+     char * pieceobtained;
+ 	 while ( true )
      {
-         piecesha1 = new CSHA1();
-         memblock = new char[pieceSize];
-    	 filetoopen.read( memblock, pieceSize );
-     	 piecesha1->Update((UINT_8 *)memblock, pieceSize);
+         CSHA1 *piecesha1 = new CSHA1();
+   	     piecesha1->Reset();
+         int newSize = pieceSize;
+         if( FileSize( fileToMake.c_str() ) - (pieceSize * piececount) < pieceSize )
+         {
+             newSize = FileSize( fileToMake.c_str() ) - (pieceSize * piececount);
+             breaknow = true;
+         }
+         if( FileSize( fileToMake.c_str() ) - (pieceSize * piececount) == 0) break;
+         UINT_8 memblock[newSize];
+    	 fread( memblock,1, newSize, filetoopen );
+     	 piecesha1->Update(memblock, newSize);
      	 piecesha1->Final();
-         char *pieceobtained = new char[40];
-     	 piecesha1->ReportHash(pieceobtained);
-     	 // segfault
-     	 pieces = pieces + UTIL_HashToString ( string(pieceobtained) );
+     	 pieceobtained = new char[40];
+       	 memset( pieceobtained, 0, sizeof( char ) * 40 );
+     	 piecesha1->ReportHash( pieceobtained );
+   	     pieces = pieces + UTIL_StringToHash ( string( pieceobtained ) );
      	 piececount++;
-     	 filetoopen.seekg(piececount*pieceSize, ios::beg);
-     	 delete memblock;
-     	 delete piecesha1;
-     	 delete pieceobtained;
+     	 //filetoopen.seekg(piececount*pieceSize, ios::beg);
+     	 if( breaknow == true) break;
      }
+     fclose(filetoopen);
+     pTorrentRoot->setItem("created by", new CAtomString( string( FILE_DESCRIPTION ) + string(" ") + string (VER_STRING ) ) );
      pTorrentInfo->setItem("pieces", new CAtomString( pieces ) );
      string pathForTorrent = fileToMake + string(".torrent");
      UTIL_MakeFile( pathForTorrent.c_str() , Encode( pTorrentRoot ) );

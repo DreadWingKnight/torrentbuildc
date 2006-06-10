@@ -1,7 +1,7 @@
 [Project]
 FileName=TorrentBuild_CPP.dev
 Name=TorrentBuild_CPP
-UnitCount=19
+UnitCount=20
 Type=0
 Ver=1
 ObjFiles=
@@ -24,10 +24,10 @@ Folders=
 CommandLine=
 UseCustomMakefile=0
 CustomMakefile=
-IncludeVersionInfo=0
+IncludeVersionInfo=1
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=0000000000000001000000
+CompilerSettings=00000000000000000001a0
 
 [Unit1]
 FileName=TorrentBuild_CPPFunctions.cpp
@@ -91,20 +91,20 @@ CompileCpp=1
 
 [VersionInfo]
 Major=0
-Minor=1
+Minor=0
 Release=1
-Build=1
-LanguageID=1033
+Build=0
+LanguageID=4105
 CharsetID=1252
 CompanyName=
-FileVersion=
-FileDescription=Developed using the Dev-C++ IDE
+FileVersion=0.0.1.0 Alpha
+FileDescription=TorrentBuild - C++ Edition
 InternalName=
 LegalCopyright=
 LegalTrademarks=
 OriginalFilename=
-ProductName=
-ProductVersion=
+ProductName=TorrentBuild - C++ Edition
+ProductVersion=0.0.1.0 Alpha
 AutoIncBuildNr=0
 
 [Unit7]
@@ -231,6 +231,16 @@ BuildCmd=
 FileName=TorrentBuild_CPPMakeFunctions.cpp
 CompileCpp=1
 Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit20]
+FileName=TorrentBuild_CPP_private.h
+CompileCpp=1
+Folder=TorrentBuild_CPP
 Compile=1
 Link=1
 Priority=1000

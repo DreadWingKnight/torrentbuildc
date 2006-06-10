@@ -71,9 +71,9 @@ void TorrentBuild_CPPDlg::CreateGUIControls(void)
 	this->SetIcon(TorrentBuild_CPPDlg_XPM);
 	
 
-	BrowseForFolder =  new wxDirDialog(this, wxT("Choose a directory"), wxT(""));
-
 	BrowseForFile =  new wxFileDialog(this, wxT("Choose a file to make a torrent of"), wxT(""), wxT(""), wxT("*.*"), wxOPEN | wxFILE_MUST_EXIST);
+
+	BrowseForFolder =  new wxDirDialog(this, wxT("Choose a directory"), wxT(""));
 
 	WxStaticText8 = new wxStaticText(this, ID_WXSTATICTEXT8, wxT("Torrent Comment"), wxPoint(0,184), wxSize(85,16), wxST_NO_AUTORESIZE, wxT("WxStaticText8"));
 
@@ -142,6 +142,7 @@ void TorrentBuild_CPPDlg::CreateGUIControls(void)
 	MakeCRC32->Enable(false);
 
 	MakeMD5 = new wxCheckBox(this, ID_MD5, wxT("MD5"), wxPoint(0,240), wxSize(72,16), 0, wxDefaultValidator, wxT("MakeMD5"));
+	MakeMD5->Enable(false);
 
 	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, wxT("Optional hashes (Used by non-torrent peer to peer networks):"), wxPoint(0,224), wxSize(300,16), wxST_NO_AUTORESIZE, wxT("WxStaticText4"));
 

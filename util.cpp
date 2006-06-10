@@ -161,11 +161,12 @@ string UTIL_EscapedToString( const string &strEscape )
 
 string UTIL_HashToString( const string &strHash )
 {
-	// convert a 20 character hash to a readable string
+	// convert a raw (20, 16, 16, 24) character hash to a readable string
+	// hash (SHA1, ED2K, MD5, TTH Root in hex)
 
 	string strString;
 
-	if( strHash.size( ) != 20 )
+	if( strHash.size( ) != 20 && strHash.size( ) != 24 && strHash.size( ) != 16 )
 		return string( );
 
 	for( unsigned long i = 0; i < strHash.size( ); i++ )
@@ -508,11 +509,12 @@ string UTIL_StringToEscapedStrict( const string &strString )
 
 string UTIL_StringToHash( const string &strString )
 {
-	// convert a readable string hash to a 20 character hash
+	// convert a readable string hash (SHA1, ED2K, MD5, TTH Root in hex) to a 
+    // raw (20, 16, 16, 24) character hash
 
 	string strHash;
 
-	if( strString.size( ) != 40 )
+	if( strString.size( ) != 40 && strString.size( ) != 32 && strString.size( ) != 48 )
 		return string( );
 
 	for( unsigned long i = 0; i < strString.size( ); i += 2 )
