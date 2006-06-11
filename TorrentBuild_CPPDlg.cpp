@@ -71,9 +71,9 @@ void TorrentBuild_CPPDlg::CreateGUIControls(void)
 	this->SetIcon(TorrentBuild_CPPDlg_XPM);
 	
 
-	BrowseForFile =  new wxFileDialog(this, wxT("Choose a file to make a torrent of"), wxT(""), wxT(""), wxT("*.*"), wxOPEN | wxFILE_MUST_EXIST);
-
 	BrowseForFolder =  new wxDirDialog(this, wxT("Choose a directory"), wxT(""));
+
+	BrowseForFile =  new wxFileDialog(this, wxT("Choose a file to make a torrent of"), wxT(""), wxT(""), wxT("*.*"), wxOPEN | wxFILE_MUST_EXIST);
 
 	WxStaticText8 = new wxStaticText(this, ID_WXSTATICTEXT8, wxT("Torrent Comment"), wxPoint(0,184), wxSize(85,16), wxST_NO_AUTORESIZE, wxT("WxStaticText8"));
 
@@ -106,9 +106,9 @@ void TorrentBuild_CPPDlg::CreateGUIControls(void)
 	MakeSeparateTorrents = new wxCheckBox(this, ID_MAKESEPARATETORRENTS, wxT("Generate 1 Torrent per file"), wxPoint(176,72), wxSize(328,16), 0, wxDefaultValidator, wxT("MakeSeparateTorrents"));
 	MakeSeparateTorrents->Enable(false);
 
-	WxGauge2 = new wxGauge(this, ID_WXGAUGE2, 100, wxPoint(0,384), wxSize(504,16), wxGA_HORIZONTAL, wxDefaultValidator, wxT("WxGauge2"));
-	WxGauge2->SetRange(100);
-	WxGauge2->SetValue(0);
+	PieceHashProgress = new wxGauge(this, ID_PIECEHASHPROGRESS, 100, wxPoint(0,384), wxSize(504,16), wxGA_HORIZONTAL, wxDefaultValidator, wxT("PieceHashProgress"));
+	PieceHashProgress->SetRange(100);
+	PieceHashProgress->SetValue(0);
 
 	HashProgress = new wxGauge(this, ID_HASHPROGRESS, 100, wxPoint(0,352), wxSize(504,16), wxGA_HORIZONTAL, wxDefaultValidator, wxT("HashProgress"));
 	HashProgress->SetRange(100);
@@ -147,7 +147,6 @@ void TorrentBuild_CPPDlg::CreateGUIControls(void)
 	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, wxT("Optional hashes (Used by non-torrent peer to peer networks):"), wxPoint(0,224), wxSize(300,16), wxST_NO_AUTORESIZE, wxT("WxStaticText4"));
 
 	PrivateTorrent = new wxCheckBox(this, ID_PRIVATETORRENT, wxT("Private Torrent"), wxPoint(400,224), wxSize(104,16), 0, wxDefaultValidator, wxT("PrivateTorrent"));
-	PrivateTorrent->Enable(false);
 
 	AnnounceURL = new wxTextCtrl(this, ID_ANNOUNCEURL, wxT(""), wxPoint(0,160), wxSize(376,21), 0, wxDefaultValidator, wxT("AnnounceURL"));
 

@@ -49,6 +49,8 @@ bool genmd5, bool gened2k, bool gentth, bool genexternals)
          pTorrentInfo->setItem( "sha1", new CAtomString( UTIL_StringToHash ( string( filehash ) ) ) );
          OptionalHashes++;
          OptionalHashProgress->SetValue( OptionalHashes );
+         Refresh();
+         Update();
      }
 /*     if( genmd5 == true )
      {
@@ -71,11 +73,15 @@ bool genmd5, bool gened2k, bool gentth, bool genexternals)
    	 int piececount = 0;
    	 bool breaknow = false;
      char * pieceobtained;
+   	 PieceHashProgress->SetValue(0);
  	 while ( true )
      {
          CSHA1 *piecesha1 = new CSHA1();
    	     piecesha1->Reset();
          int newSize = pieceSize;
+         PieceHashProgress->SetValue( ( (pieceSize * piececount) /FileSize(fileToMake.c_str()) ) * 100 );
+         Refresh();
+         Update();
          if( FileSize( fileToMake.c_str() ) - (pieceSize * piececount) < pieceSize )
          {
              newSize = FileSize( fileToMake.c_str() ) - (pieceSize * piececount);
@@ -94,6 +100,7 @@ bool genmd5, bool gened2k, bool gentth, bool genexternals)
      	 //filetoopen.seekg(piececount*pieceSize, ios::beg);
      	 if( breaknow == true) break;
      }
+     PieceHashProgress->SetValue(100);
      fclose(filetoopen);
      pTorrentRoot->setItem("created by", new CAtomString( string( FILE_DESCRIPTION ) + string(" ") + string (VER_STRING ) ) );
      pTorrentInfo->setItem("pieces", new CAtomString( pieces ) );

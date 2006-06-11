@@ -16,4 +16,9 @@
 __int64 FileSize(const char* sFileName);
 CAtom *GetConfig();
 int GetAutoPieceSize ( unsigned long TotalSize );
+#ifdef WIN32
+ #define MILLISLEEP( x ) Sleep( x )
+#else
+ #define MILLISLEEP( x ) usleep( ( x ) * 1000 )
+#endif
 #endif
