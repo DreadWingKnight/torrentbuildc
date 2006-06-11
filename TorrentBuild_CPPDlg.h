@@ -24,8 +24,8 @@
 //Do not add custom headers
 //wxDev-C++ designer will remove them
 ////Header Include Start
-#include <wx/filedlg.h>
 #include <wx/dirdlg.h>
+#include <wx/filedlg.h>
 #include <wx/gauge.h>
 #include <wx/checkbox.h>
 #include <wx/combobox.h>
@@ -60,8 +60,8 @@ class TorrentBuild_CPPDlg : public wxDialog
 		//Do not add custom control declarations
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
-		wxFileDialog *BrowseForFile;
 		wxDirDialog *BrowseForFolder;
+		wxFileDialog *BrowseForFile;
 		wxStaticText *WxStaticText8;
 		wxCheckBox *MultiTrackerEnabled;
 		wxTextCtrl *TorrentComment;
@@ -74,7 +74,7 @@ class TorrentBuild_CPPDlg : public wxDialog
 		wxCheckBox *IncludeBlacklisted;
 		wxCheckBox *IncludeTorrents;
 		wxCheckBox *MakeSeparateTorrents;
-		wxGauge *WxGauge2;
+		wxGauge *PieceHashProgress;
 		wxGauge *HashProgress;
 		wxGauge *OptionalHashProgress;
 		wxStaticText *WxStaticText7;
@@ -120,7 +120,7 @@ class TorrentBuild_CPPDlg : public wxDialog
 			ID_INCLUDEBLACKLISTED = 1028,
 			ID_INCLUDETORRENTS = 1027,
 			ID_MAKESEPARATETORRENTS = 1026,
-			ID_WXGAUGE2 = 1025,
+			ID_PIECEHASHPROGRESS = 1025,
 			ID_HASHPROGRESS = 1024,
 			ID_OPTIONALHASHPROGRESS = 1023,
 			ID_WXSTATICTEXT7 = 1022,
