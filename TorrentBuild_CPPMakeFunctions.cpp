@@ -13,6 +13,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include "src_algo/crc32.h"
 
 void TorrentBuild_CPPDlg::MakeTorrentFromFile( string fileToMake , int pieceSize, string announceurl, CAtom *announcelist,
 string comment, bool privateTorrent, bool gensha1, bool gencrc32,
@@ -52,7 +53,21 @@ bool genmd5, bool gened2k, bool gentth, bool genexternals)
          Refresh();
          Update();
      }
-/*     if( genmd5 == true )
+     if( gencrc32 == true )
+     {
+         CCRC32Hash *fileCRC32 = new CCRC32Hash();
+         fileCRC32->HashFile( (char *)(fileToMake.c_str()) );
+         fileCRC32->Final();
+         char fileCRChash[8];
+       	 memset( fileCRChash, 0, sizeof( char ) * 8 );
+         fileCRC32->ReportHash( fileCRChash );
+         pTorrentInfo->setItem( "crc32", new CAtomString( string( fileCRChash ) ) );
+         OptionalHashes++;
+         OptionalHashProgress->SetValue( OptionalHashes );
+         Refresh();
+         Update();
+     }
+     /*     if( genmd5 == true )
      {
          MD5 *filemd5 = new MD5();
          FILE *fIn;
