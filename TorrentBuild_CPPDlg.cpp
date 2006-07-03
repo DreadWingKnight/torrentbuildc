@@ -323,7 +323,7 @@ void TorrentBuild_CPPDlg::BuildTorrentNowClick(wxCommandEvent& event)
         int OptionalHashes = 0;
         if( MakeSHA1->GetValue() == true ) OptionalHashes++;
 //        if( MakeMD5->GetValue() == true ) OptionalHashes++;
-//        if( MakeCRC32->GetValue() == true ) OptionalHashes++;
+        if( MakeCRC32->GetValue() == true ) OptionalHashes++;
 //        if( MakeED2K->GetValue() == true ) OptionalHashes++;
 //        if( MakeTiger->GetValue() == true ) OptionalHashes++;
         
